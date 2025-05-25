@@ -271,7 +271,7 @@ export default function Home() {
               <div className="flex flex-col md:flex-row md:justify-between md:items-start">
                 <div>
                   <h3 className={`text-xl font-semibold ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>Assistant Professor</h3>
-                  <p className={darkMode ? 'text-gray-400' : 'text-gray-600'}>Vishwaniketan's Institute of Management Entrepreneurship Engineering Technology, Khopoli</p>
+                  <p className={darkMode ? 'text-gray-400' : 'text-gray-600'}>Vishwaniketan&apos;s Institute of Management Entrepreneurship Engineering Technology, Khopoli</p>
                 </div>
                 <div className={darkMode ? 'text-gray-400' : 'text-gray-500'}>December 2021 - December 2022</div>
               </div>
