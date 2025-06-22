@@ -6,6 +6,8 @@ import { useState } from 'react';
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const [showAllPublications, setShowAllPublications] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
 
   const allPublications = [
     {
@@ -121,13 +123,41 @@ export default function Home() {
           <div className="flex justify-between items-center">
             <h1 className={`text-xl font-bold ${darkMode ? 'text-gray-200' : 'text-gray-800'}  `}>Dr. Swati Jadhav</h1>
             <div className="flex items-center space-x-8">
-              <ul className={`hidden md:flex space-x-6 ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>
-                <li><a href="#about" className="hover:text-blue-500 transition">About</a></li>
-                <li><a href="#experience" className="hover:text-blue-500 transition">Experience</a></li>
-                <li><a href="#skills" className="hover:text-blue-500 transition">Skills</a></li>
-                <li><a href="#publications" className="hover:text-blue-500 transition">Publications</a></li>
-                <li><a href="#patents" className="hover:text-blue-500 transition">Patents</a></li>
-              </ul>
+              {/* Desktop Menu */}
+<ul className={`hidden md:flex space-x-6 ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>
+  <li><a href="#about" className="hover:text-blue-500 transition">About</a></li>
+  <li><a href="#experience" className="hover:text-blue-500 transition">Experience</a></li>
+  <li><a href="#skills" className="hover:text-blue-500 transition">Skills</a></li>
+  <li><a href="#publications" className="hover:text-blue-500 transition">Publications</a></li>
+  <li><a href="#patents" className="hover:text-blue-500 transition">Patents</a></li>
+</ul>
+
+{/* Mobile Hamburger Button */}
+<div className="md:hidden">
+  <button
+    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+    className="text-gray-700 dark:text-gray-300 focus:outline-none"
+  >
+    <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+      <path strokeLinecap="round" strokeLinejoin="round" d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+    </svg>
+  </button>
+</div>
+{/* Mobile Menu Dropdown */}
+{mobileMenuOpen && (
+  <div className={`absolute top-full left-0 w-full z-40 
+    ${darkMode ? 'bg-gray-800/80 text-gray-200' : 'bg-white/80 text-gray-800'} 
+    backdrop-blur-lg md:hidden px-6 py-4 space-y-2 shadow-xl rounded-b-lg`}>
+    
+    <a href="#about" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-500 transition">About</a>
+    <a href="#experience" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-500 transition">Experience</a>
+    <a href="#skills" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-500 transition">Skills</a>
+    <a href="#publications" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-500 transition">Publications</a>
+    <a href="#patents" onClick={() => setMobileMenuOpen(false)} className="block hover:text-blue-500 transition">Patents</a>
+  </div>
+)}
+
+
               <button 
                 onClick={() => setDarkMode(!darkMode)}
                 className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 focus:outline-none"
